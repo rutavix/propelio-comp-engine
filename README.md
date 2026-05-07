@@ -1,7 +1,8 @@
 # Real Estate Comp Engine
 
 Pulls nearby property records from Propelio for a subject address, scores them
-by lot-size similarity, and writes a 3-sheet Excel report.
+by lot-size similarity, and writes a 4-sheet output: Subject Property, Top
+Comps, Neighborhood Summary, ARV Analysis.
 
 ## Project layout
 
