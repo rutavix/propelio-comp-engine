@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Local / generated outputs
+output/
+output/~$*.xlsx
+~$*.xlsx
+
+# Secrets / local environment
+.env
+
+# Old browser automation artifacts (no longer used)
+chromedriver.exe
+chrome-win64/
+LICENSE.chromedriver
+THIRD_PARTY_NOTICES.chromedriver
+debug_*.png
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
