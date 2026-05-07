@@ -12,19 +12,22 @@ via ``python-dotenv`` so they never need to be committed to source
 control. See ``.env.example`` for the expected variables.
 """
 
+from dotenv import load_dotenv
 import os
 
-from dotenv import load_dotenv
-
-load_dotenv()
+# override=True so values in .env win over any pre-existing OS env vars
+# of the same name (otherwise a stale shell-level PROXY_URL would shadow
+# the one in .env and python-dotenv would silently keep the stale value).
+load_dotenv(override=True)
 
 # --- Propelio API credentials ---------------------------------------------
-EMAIL = os.getenv("PROPELIO_EMAIL")
-PASSWORD = os.getenv("PROPELIO_PASSWORD")
+PROPELIO_EMAIL = os.getenv("PROPELIO_EMAIL")
+PROPELIO_PASSWORD = os.getenv("PROPELIO_PASSWORD")
 
 # Backwards-compatible aliases used by the rest of the codebase.
-PROPELIO_USERNAME = EMAIL
-PROPELIO_PASSWORD = PASSWORD
+EMAIL = PROPELIO_EMAIL
+PASSWORD = PROPELIO_PASSWORD
+PROPELIO_USERNAME = PROPELIO_EMAIL
 
 # --- HTTP / network knobs (used by scraper.py) ----------------------------
 # Outbound proxy so Propelio sees a residential-looking source IP.

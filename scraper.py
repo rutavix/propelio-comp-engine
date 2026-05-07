@@ -380,6 +380,7 @@ class PropelioClient:
         base_url: str = PROPELIO_API_BASE,
         proxies: Optional[Dict[str, str]] = None,
     ) -> None:
+        print(f"[DEBUG] PROXY_URL loaded: {config.PROXY_URL}")
         if not username or not password:
             raise PropelioScraperError(
                 "Propelio credentials are not configured. Set "
@@ -1670,3 +1671,5 @@ def _redact_proxy(url: Optional[str]) -> str:
         return f"{scheme}://{user}:***@{host}"
     except Exception:
         return "<proxy>"
+
+
