@@ -1,35 +1,57 @@
 # Real Estate Comp Engine
 
 ## Overview
-A Python tool that takes any US property address, pulls live data from the Propelio API, scores comparable properties, and outputs a professional Excel report with ARV calculation.
+A Python tool that takes any US property address, pulls live data from the 
+Propelio API, scores comparable properties, and outputs a professional Excel 
+report with ARV calculation.
 
-## How to Install & Setup
+---
+
+## Before You Start — Install These First
+
+### 1. Install Python
+Download: https://www.python.org/downloads/
+- Download Python 3.10 or higher
+- During install: ✅ check "Add Python to PATH"
+- YouTube guide: https://www.youtube.com/watch?v=YYXdXT2l-Gg
+
+### 2. Install Git
+Download: https://git-scm.com/downloads
+- Download Git for Windows
+- Use all default settings during install
+- Video guide: https://www.loom.com/share/6847c474d4234f478b95e09857b208b0
+
+---
+
+## Setup Walkthrough (Video)
+https://www.loom.com/share/46c66207a45148a4b60482faaa2dab94
+
+---
+
+## Step by Step Setup
 
 ### Step 1 — Clone the Repository
-```bash
 git clone https://github.com/rutavix/propelio-comp-engine.git
 cd propelio-comp-engine
-```
 
-### Step 2 — Open Terminal in the Project Folder
-- Press `Win + R` → type `cmd` → press Enter
-- Type: `F:`
-- Type: `cd \real-estate-comps`
+### Step 2 — Create Virtual Environment
+python -m venv .venv
 
 ### Step 3 — Activate Virtual Environment
-```bash
 .venv\Scripts\activate
-```
-You will see `(.venv)` at the start of the line when ready.
+You will see (.venv) at the start of the line — this means you are ready.
 
 ### Step 4 — Install Dependencies
-```bash
 pip install -r requirements.txt
-```
 
 ### Step 5 — Setup Credentials
-- Copy `.env.example` and rename it to `.env`
-- Fill in your Propelio email, password, and proxy URL
+copy .env.example .env
+notepad .env
+Fill in your credentials:
+PROPELIO_EMAIL=your_email_here
+PROPELIO_PASSWORD=your_password_here
+PROXY_URL=http://user:pass@host:port
+Save and close the file.
 
 ---
 
@@ -39,41 +61,40 @@ pip install -r requirements.txt
 **Purpose:** Run a comp analysis on any property address.
 
 **Command:**
-```bash
 python main.py "3761 Dunhaven Rd, Dallas, TX"
-```
 
-**Output:** Excel report saved to `output/comps_report.xlsx` with ARV, top 3 comps, and neighborhood summary.
+**Output:** Excel report saved to output/comps_report.xlsx with ARV, 
+top 3 comps, and neighborhood summary.
 
-**Video:** https://www.loom.com/share/1fe17ff756224a0f96e55d7320d247b0
+**Video:** https://www.loom.com/share/e3ef18c3ece4426c952191d1f3f6980b
 
 ---
 
 ### Use Case 2 — Expand Radius
-**Purpose:** When fewer than 3 exact subdivision matches are found, automatically pulls comps from nearby neighborhoods with a 0.8x confidence penalty applied.
+**Purpose:** When fewer than 3 exact subdivision matches are found, 
+automatically pulls comps from nearby neighborhoods with a 0.8x 
+confidence penalty applied.
 
 **Command:**
-```bash
 python main.py "4044 Williamsburg Rd, Dallas, TX" --expand-radius
-```
 
-**Output:** Wider comp pool, cross-subdivision penalty visible in confidence formula column.
+**Output:** Wider comp pool, cross-subdivision penalty visible in 
+confidence formula column.
 
-**Video:** https://www.loom.com/share/d28b3922d08e45b4a7ea33093c64025e
+**Video:** https://www.loom.com/share/6c0fe12caaa34e359e7183b4152fa672
 
 ---
 
 ### Use Case 3 — New Builds Filter
-**Purpose:** Filter comps to new construction only (built 2015 or later). Useful when the subject property is a new build.
+**Purpose:** Filter comps to new construction only (built 2015 or later). 
+Useful when the subject property is a new build.
 
 **Command:**
-```bash
 python main.py "3761 Dunhaven Rd, Dallas, TX" --new-builds
-```
 
-**Output:** Only comps with `year_built >= 2015` included in scoring pool.
+**Output:** Only comps with year_built >= 2015 included in scoring pool.
 
-**Video:** https://www.loom.com/share/16e47ea956d24972a1bc9c30027aa456
+**Video:** https://www.loom.com/share/6ff3d202a8004f3abbe142f5e04d1b15
 
 ---
 
@@ -86,10 +107,10 @@ python main.py "3761 Dunhaven Rd, Dallas, TX" --new-builds
 | Neighborhood Summary | Avg price and comp count per subdivision |
 | ARV Analysis | Final ARV, low/high range, sold comps used |
 
+---
+
 ## Dependencies
-```
 requests==2.31.0
 pandas==2.0.3
 openpyxl==3.1.2
 python-dotenv
-```
