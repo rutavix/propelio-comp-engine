@@ -24,7 +24,7 @@ Download: https://git-scm.com/downloads
 ---
 
 ## Setup Walkthrough (Video)
-https://www.loom.com/share/46c66207a45148a4b60482faaa2dab94
+https://www.loom.com/share/082920937f854236ae8a411b987c1a70
 
 ---
 
