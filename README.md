@@ -31,26 +31,38 @@ https://www.loom.com/share/46c66207a45148a4b60482faaa2dab94
 ## Step by Step Setup
 
 ### Step 1 — Clone the Repository
+```bash
 git clone https://github.com/rutavix/propelio-comp-engine.git
 cd propelio-comp-engine
+```
 
 ### Step 2 — Create Virtual Environment
+```bash
 python -m venv .venv
+```
 
 ### Step 3 — Activate Virtual Environment
+```bash
 .venv\Scripts\activate
+```
 You will see (.venv) at the start of the line — this means you are ready.
 
 ### Step 4 — Install Dependencies
+```bash
 pip install -r requirements.txt
+```
 
 ### Step 5 — Setup Credentials
+```bash
 copy .env.example .env
 notepad .env
+```
 Fill in your credentials:
+```env
 PROPELIO_EMAIL=your_email_here
 PROPELIO_PASSWORD=your_password_here
 PROXY_URL=http://user:pass@host:port
+```
 Save and close the file.
 
 ---
@@ -61,7 +73,9 @@ Save and close the file.
 **Purpose:** Run a comp analysis on any property address.
 
 **Command:**
+```bash
 python main.py "3761 Dunhaven Rd, Dallas, TX"
+```
 
 **Output:** Excel report saved to output/comps_report.xlsx with ARV, 
 top 3 comps, and neighborhood summary.
@@ -76,7 +90,9 @@ automatically pulls comps from nearby neighborhoods with a 0.8x
 confidence penalty applied.
 
 **Command:**
+```bash
 python main.py "4044 Williamsburg Rd, Dallas, TX" --expand-radius
+```
 
 **Output:** Wider comp pool, cross-subdivision penalty visible in 
 confidence formula column.
@@ -90,7 +106,9 @@ confidence formula column.
 Useful when the subject property is a new build.
 
 **Command:**
+```bash
 python main.py "3761 Dunhaven Rd, Dallas, TX" --new-builds
+```
 
 **Output:** Only comps with year_built >= 2015 included in scoring pool.
 
@@ -110,7 +128,9 @@ python main.py "3761 Dunhaven Rd, Dallas, TX" --new-builds
 ---
 
 ## Dependencies
+```txt
 requests==2.31.0
 pandas==2.0.3
 openpyxl==3.1.2
 python-dotenv
+```
